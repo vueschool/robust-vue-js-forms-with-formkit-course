@@ -19,7 +19,7 @@ async function handleSubmit(data) {
       <template #default="{ state }">
         <h1>Login</h1>
         <FormKit
-          validation="+length:16,20|*?url|(500)username_is_unique"
+          validation="(500)username_is_unique"
           type="text"
           label="Username"
           name="username"
