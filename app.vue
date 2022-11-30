@@ -1,4 +1,5 @@
 <script setup>
+import { FormKitSchema } from "@formkit/vue";
 const formData = ref({
   username: "danielkelly_io",
   password: "",
@@ -10,22 +11,39 @@ async function handleSubmit(data) {
 </script>
 <template>
   <div>
-    <FormKit
-      type="form"
-      submit-label="Login"
-      :value="formData"
-      @submit="handleSubmit"
-    >
-      <template #default="{ state }">
-        <h1>Login</h1>
-        <FormKit
-          validation="(500)username_is_unique"
-          type="text"
-          label="Username"
-          name="username"
-        />
-        <FormKit type="password" label="Password" name="password" />
-      </template>
-    </FormKit>
+    <FormKitSchema
+      :data="{
+        formData,
+        attrs: {
+          onSubmit: handleSubmit,
+        },
+      }"
+      :schema="[
+        {
+          $formkit: 'form',
+          submitLabel: 'Login',
+          value: '$formData',
+          bind: '$attrs',
+          children: [
+            {
+              $el: 'h1',
+              children: 'Login',
+            },
+            {
+              validation: '(500)username_is_unique',
+              $formkit: 'text',
+              label: 'Username',
+              name: 'username',
+            },
+            {
+              $formkit: 'password',
+              label: 'Password',
+              name: 'password',
+              if: '$value.username',
+            },
+          ],
+        },
+      ]"
+    />
   </div>
 </template>
