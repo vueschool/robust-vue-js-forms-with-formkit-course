@@ -34,6 +34,7 @@ async function handleSubmit(data) {
               $formkit: 'text',
               label: 'Username',
               name: 'username',
+              help: 'Please fill out your username',
             },
             {
               $formkit: 'password',
