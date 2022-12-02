@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@formkit/addons": "^1.0.0-beta.12",
-    "@formkit/nuxt": "^1.0.0-beta.12"
+    "@formkit/nuxt": "^1.0.0-beta.12",
+    "vue-multiselect": "^3.0.0-alpha.2"
   }
 }

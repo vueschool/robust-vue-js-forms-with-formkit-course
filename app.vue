@@ -1,5 +1,8 @@
 <script setup>
-import { FormKitSchema } from "@formkit/vue";
+import { FormKitSchema, createInput } from "@formkit/vue";
+import VueMultiSelectFormKit from "./formkit-components/VueMultiSelectFormKit.vue";
+
+const ms = createInput(VueMultiSelectFormKit);
 const formData = ref({
   username: "danielkelly_io",
   password: "",
@@ -41,6 +44,12 @@ async function handleSubmit(data) {
               label: 'Password',
               name: 'password',
               if: '$value.username',
+            },
+            {
+              $formkit: ms,
+              label: `Framework`,
+              value: 'Vue',
+              options: ['Vue', 'React', 'Svelte'],
             },
           ],
         },
