@@ -3,15 +3,26 @@ import { createProPlugin, inputs } from "@formkit/pro";
 import { createAutoAnimatePlugin } from "@formkit/addons";
 import createToolTipPlugin from "@/formkit-plugins/tooltip-plugin";
 import "@/formkit-plugins/tooltip-plugin/styles.css";
-import "@formkit/pro/genesis";
+import { generateClasses } from "@formkit/themes";
 
 const config: DefaultConfigOptions = {
-  theme: "genesis",
   plugins: [
     createProPlugin("fk-8747143e23e", inputs),
     createAutoAnimatePlugin(),
     createToolTipPlugin(),
   ],
+  config: {
+    classes: generateClasses({
+      global: {
+        label: "text-red-400 formkit-invalid:text-red-900",
+      },
+      text: {
+        label: "bg-blue-500",
+      },
+      password: {},
+      url: {},
+    }),
+  },
   messages: {
     en: {
       validation: {
