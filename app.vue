@@ -1,7 +1,15 @@
+<script setup>
+import '@formkit/themes/genesis'
+
+function logForm(values){
+  console.log("values", values);
+}
+</script>
 <template>
   <div>
-    <FormKit
-      :classes="{
+    <FormKit type="form" submit-label="Login" @submit="logForm">
+      <FormKit
+          :classes="{
         outer: 'mb-5',
         label: 'block mb-1 font-bold text-sm',
         inner:
@@ -10,12 +18,12 @@
           'w-full h-10 px-3 border-none text-base text-gray-700 placeholder-gray-400',
         help: 'text-xs text-gray-500',
       }"
-      type="text"
-      label="Name"
-      name="name"
-    />
-    <FormKit
-      :classes="{
+          type="text"
+          label="Name"
+          name="name"
+      />
+      <FormKit
+          :classes="{
         outer: 'mb-5',
         label: 'block mb-1 font-bold text-sm',
         inner:
@@ -24,10 +32,13 @@
           'w-full h-10 px-3 border-none text-base text-gray-700 placeholder-gray-400',
         help: 'text-xs text-gray-500',
       }"
-      type="password"
-      validation="required"
-      label="Name"
-      name="name"
-    />
+          type="password"
+          validation="required"
+          label="Password"
+          name="password"
+      />
+    </FormKit>
   </div>
 </template>
+
+
